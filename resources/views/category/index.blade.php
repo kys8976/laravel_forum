@@ -17,14 +17,14 @@
             </div>
             <div class="row">
                 <div class="col-12">
-                    <ul class="list-group">
-                        <li class="list-group-item">
-                            <a href="{{ url('/') }}/category/1/view">
-                                Movie 
+                    <ul class="list-group">                        
+                        @foreach ($categories as $category)
+                        <li class="list-group-item" >
+                            <a href="{{ url('/') }}/category/{{$category->id}}/view">
+                                {{$category->title }} 
                             </a>
                         </li>                            
-                        <li class="list-group-item">Movie 
-                        </li>                        
+                        @endforeach
                     </ul>
                 </div>
             </div>

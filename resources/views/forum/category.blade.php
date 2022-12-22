@@ -9,22 +9,9 @@
           </div>
         </div>
         <hr class="mt-3">
-
-        @php
-            $categories =App\Models\Category::orderby('title', 'asc')
-            ->get();
-        @endphp
-        @if(count($categories)>0)
-        @foreach($categories as $category)
-        @php
-            $posts = App\Models\Post::where('category_id', $category->id)
-            ->orderby('created_at','desc')->limit(3)
-            ->get();
-        @endphp
-        @if(count($posts)>0)
         <div class="row">
             <div class="col-12">
-                <h4>{{ $category->title }}</h4>
+                <h4>{{ $category_title }}</h4>
                 <ul class="list-group">
                     @foreach($posts as $post)
                     <li class="list-group-item list-group-item-action">
@@ -39,15 +26,6 @@
                     @endforeach
                 </ul>
             </div>
-            <div class="col-12 my-3">
-                <div class="d-grid gap-2 col-6 mx-auto">
-                    <a href="{{ url('/') }}/{{ $category->id }}/category" class="btn btn-dark">All Postings of {{ $category->title }} Category</a>
-                </div>
-            </div>
         </div>
-        <hr>
-        @endif
-        @endforeach
-        @endif
       </div>      
 @endsection

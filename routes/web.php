@@ -16,13 +16,20 @@ use App\Http\Controllers\CategoryController;
 */
 
 Route::get('/', [ForumController::class, 'index']);
-Route::get('/1/view', [ForumController::class, 'view']);
+Route::get('/{id}/view', [ForumController::class, 'view']);
+Route::get('/{id}/edit', [ForumController::class, 'edit']);
 Route::get('/create', [ForumController::class, 'create']);
+Route::post('/store', [ForumController::class, 'store']);
+Route::post('/update', [ForumController::class, 'update']);
+Route::get('/{id}/category', [ForumController::class, 'category']);
+Route::delete('/{id}/delete', [ForumController::class, 'delete']);
 
 
 Route::get('/category', [CategoryController::class, 'index']);
 Route::post('/category/store', [CategoryController::class, 'store']);
-Route::get('/category/1/view', [CategoryController::class, 'view']);
+Route::get('/category/{id}/view', [CategoryController::class, 'view']);
+Route::delete('/category/{id}/delete', [CategoryController::class, 'delete']);
+Route::put('/category/{id}/update', [CategoryController::class, 'update']);
 
 /*
 Route::get('/', function () {

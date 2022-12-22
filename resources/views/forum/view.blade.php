@@ -5,13 +5,17 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 border border-1 mt-5">
-                    <h3>title data </h3>
-                    <p>dsadasada das  das asd ascas ddsa dsadasada das  das asd ascas ddsa dsadasada das  das asd ascas ddsa dsadasada das  das asd ascas ddsa dsadasada das  das asd ascas ddsa dsadasada das  das asd ascas ddsa dsadasada das  das asd ascas ddsa dsadasada das  das asd ascas ddsa dsadasada das  das asd ascas ddsa 
-                    </p>
+                    <h3 class="bg-light border border-1 py-3 px-3 mt-3">{{ $post->title }} </h3>
+                    {!! $post->content !!}                    
                     <hr>
                     <div class="d-grid gap-2 d-md-flex justify-content-md-end mb-3">
-                        <button class="btn btn-secondary me-md-2" type="button">Edit</button>
-                        <button class="btn btn-danger" type="button">Delete</button>
+                        <a href="{{ url('/') }}/{{ $post->id }}/edit" class="btn btn-secondary me-md-2" >Edit</a>
+                        
+                        <form method="post" action="/{{ $post->id }}/delete">
+                            @method('DELETE')
+                            @csrf
+                            <button class="btn btn-danger" type="submit">Delete</button>
+                        </form>
                       </div>
                 </div>
             </div>

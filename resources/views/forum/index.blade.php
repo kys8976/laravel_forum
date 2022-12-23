@@ -4,9 +4,12 @@
       <div class="container">
         <div class="row">
             <div class="col-12">
+                @auth                
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                 <a href="{{ url('/') }}/create" class="btn btn-success">New Post</a>
-          </div>
+                </div>
+                @endauth
+             </div>
         </div>
         <hr class="mt-3">
 
@@ -31,10 +34,19 @@
                         <a href="{{ url('/') }}/{{ $post->id }}/view" style="text-decoration: none" class="text-dark">
                         {{$post->title }}
                         </a>
-                        <span class="badge bg-info text-dark"><i class=" fa-solid fa-comment-dots"></i> 4</span>
-                        <span class="badge rounded-pill bg-danger"><i class=" fa-solid fa-heart"></i> 3</span>
+                        <span class="badge bg-info text-dark"><i class=" fa-solid fa-comment-dots"></i> 
+                        {{App\Models\Reply::where('post_id',$post->id)->count()}}                         
+                        </span>
+                        <span class="badge rounded-pill bg-danger"><i class=" fa-solid fa-heart"></i>
+                            {{App\Models\Heart::where('post_id',$post->id)->count()}}        
+                        </span>
                         <br>
-                        <small>{{ $post->created_at }} | by SB Hero</small>
+                        <small>{{ $post->created_at }} | by \                        
+                            @php
+                            $user=App\Models\User::find($post->user_id);                         
+                            @endphp
+                            {{ $user->name }}    
+                        </small>
                     </li>
                     @endforeach
                 </ul>

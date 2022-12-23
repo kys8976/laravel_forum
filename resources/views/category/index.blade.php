@@ -10,7 +10,7 @@
                         @csrf
                         <input type="text" name="title" class="form-control">
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end mb-3 my-3">
-                            <button class="btn btn-primary" type="submit">Create</button>
+                            <button class="btn btn-outline-primary" type="submit">Create</button>
                         </div>                    
                     </form>
                 </div>
